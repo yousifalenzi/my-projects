@@ -12,9 +12,9 @@ class bigO {
         print(i) // O(1)
     } // O(1)
 
-    fun Log_n(){
+    fun Log_n(array){
          var i = 0
-        while (i<10){
+        while (i<array.size){
             i+=2
             println(i)
 
