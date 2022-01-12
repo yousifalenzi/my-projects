@@ -59,16 +59,20 @@ fun hasPairsWithSum2(arry: Array<Int>, sum:Int):Boolean{// o(n)
 
       for (i in 0 until len){
           if (hashSet.contains(arry[i]))return true
+
            hashSet.add(sum-arry[i])
       }
 
       return false
   }
 fun main(){
-                                  //13
-    val arr2 = arrayOf(1,8,5,6) // 12, 5 ,
+                                  //15
+    val arr2 = arrayOf(9,2,6,5).filter { it+it>5 } //6,
 
+      for (arr in arr2){
 
+          println(arr)
+      }
 
 
 }

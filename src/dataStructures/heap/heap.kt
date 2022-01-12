@@ -1,7 +1,7 @@
 package dataStructures.heap
 import kotlin.random.Random
 
-internal class heapnode (var key1:Int){
+ class heapnode (var key1:Int){
 
      fun setkey(i:Int){this.key1=i}
      fun getKey():Int = key1
@@ -24,7 +24,7 @@ class heap (val size:Int){
 
           if (isFull())return false
 
-          val newnode = heapnode(key)//77
+          val newnode = dataStructures.heap.heapnode(key)//77
           array[currentsize] =newnode.getKey()//77
             trickleup(currentsize)//1
             currentsize++

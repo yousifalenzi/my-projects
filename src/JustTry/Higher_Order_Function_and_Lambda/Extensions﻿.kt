@@ -5,11 +5,11 @@ import kotlin.random.Random
 fun main(){
 
 
-     val p = person("yousif",28)
+     val p = JustTry.Higher_Order_Function_and_Lambda.person("yousif", 28)
      p.printdata()
     run {
         p.name
-    }.print()
+    }
 
     with(p,{//fun person
 
@@ -89,7 +89,7 @@ class read:book(){
 fun book.getname()="yousif"
 fun read.getname()="ali"
 
-fun printgetname(b:book)= println(b.getname())
+
 
 
 

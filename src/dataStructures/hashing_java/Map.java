@@ -7,17 +7,18 @@ import com.sun.org.apache.xpath.internal.operations.String;
 import java.util.ArrayList;
 import java.util.Objects;
 
+
 // A node of chains
-class HashNode<K, V> {
+class HashNode1<K, V> {
     K key;
     V value;
     final int hashCode;
 
     // Reference to next node
-    HashNode<K, V> next;
+    HashNode1<K, V> next;
 
     // Constructor
-    public HashNode(K key, V value, int hashCode)
+    public HashNode1(K key, V value, int hashCode)
     {
         this.key = key;
         this.value = value;
@@ -28,7 +29,7 @@ class HashNode<K, V> {
 // Class to represent entire hash table
 class Map<K, V> {
     // bucketArray is used to store array of chains
-    private ArrayList<HashNode<K, V> > bucketArray;
+    private ArrayList<HashNode1<K, V> > bucketArray;
 
     // Current capacity of array list
     private int numBuckets;
@@ -74,10 +75,10 @@ class Map<K, V> {
         int bucketIndex = getBucketIndex(key);
         int hashCode = hashCode(key);
         // Get head of chain
-        HashNode<K, V> head = bucketArray.get(bucketIndex);
+        HashNode1<K, V> head = bucketArray.get(bucketIndex);
 
         // Search for key in its chain
-        HashNode<K, V> prev = null;
+        HashNode1<K, V> prev = null;
         while (head != null) {
             // If Key found
             if (head.key.equals(key) && hashCode == head.hashCode)
@@ -117,7 +118,7 @@ class Map<K, V> {
         int bucketIndex = getBucketIndex(key);
         int hashCode = hashCode(key);
 
-        HashNode<K, V> head = bucketArray.get(bucketIndex);
+        HashNode1<K, V> head = bucketArray.get(bucketIndex);
 
         // Search key in chain
         while (head != null) {
@@ -135,12 +136,12 @@ class Map<K, V> {
         // Find head of chain for given key
         int bucketIndex = getBucketIndex(key);
         int hashCode = hashCode(key);
-        HashNode<K, V> head = bucketArray.get(bucketIndex);
+        HashNode1<K, V> head = bucketArray.get(bucketIndex);
 
         // Check if key is already present
         while (head != null) {
             if (head.next==null ){
-                HashNode<K, V> newNode = new HashNode<K, V>(key, value, hashCode);
+                HashNode1<K, V> newNode = new HashNode1<K, V>(key, value, hashCode);
                 head.next = newNode;
 
                 return;
@@ -153,22 +154,22 @@ class Map<K, V> {
         // Insert key in chain
         size++;
         head = bucketArray.get(bucketIndex);
-        HashNode<K, V> newNode
-                = new HashNode<K, V>(key, value, hashCode);
+        HashNode1<K, V> newNode
+                = new HashNode1<K, V>(key, value, hashCode);
         newNode.next = head;
         bucketArray.set(bucketIndex, newNode);
 
         // If load factor goes beyond threshold, then
         // double hash table size
         if ((1.0 * size) / numBuckets >= 0.7) {
-            ArrayList<HashNode<K, V> > temp = bucketArray;
+            ArrayList<HashNode1<K, V> > temp = bucketArray;
             bucketArray = new ArrayList<>();
             numBuckets = 2 * numBuckets;
             size = 0;
             for (int i = 0; i < numBuckets; i++)
                 bucketArray.add(null);
 
-            for (HashNode<K, V> headNode : temp) {
+            for (HashNode1<K, V> headNode : temp) {
                 while (headNode != null) {
                     add(headNode.key, headNode.value);
                     headNode = headNode.next;

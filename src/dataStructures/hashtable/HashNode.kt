@@ -4,9 +4,9 @@ package dataStructures.hashtable
 import java.util.*
 
 
-private  class Hashingnode<K,V>(val key: K, var vaule: V, val hashcode:Int) {
+private  class Hashingnode1<K,V>(val key: K, var vaule: V, val hashcode:Int) {
     //phone contact
-    var next: Hashingnode<K, V>? = null
+    var next: Hashingnode1<K, V>? = null
 }
 
 
@@ -14,7 +14,7 @@ private  class Hashingnode<K,V>(val key: K, var vaule: V, val hashcode:Int) {
 class Maping<K,V>{
 
     // bucketArray is used to store array of chains
-    private var bucketArray = ArrayList<Hashingnode<K, V>?>()
+    private var bucketArray = ArrayList<Hashingnode1<K, V>?>()
 
     // Current capacity of array list
     private var numBucket :Int = 10
@@ -60,7 +60,7 @@ class Maping<K,V>{
         // Search for key in its chain
 
         // Search for key in its chain
-        var prev: Hashingnode<K, V>? = null
+        var prev: Hashingnode1<K, V>? = null
         while (head != null) {
             // If Key found
             if (head.key == key && hashCode == head.hashcode) break
@@ -93,7 +93,7 @@ class Maping<K,V>{
         val hashCode = hashcode(key)
         var head = bucketArray[bucketIndex]//[5] = (null)
         val data=head?.vaule
-        val newNodee = Hashingnode(key, value, hashCode)
+        val newNodee = Hashingnode1(key, value, hashCode)
 
         // Check if key is already present
         // Check if key is already present
@@ -141,7 +141,7 @@ class Maping<K,V>{
         // Find head of chain for given key
         val bucketIndex = getBucketIndex(key)
         val hashCode = hashcode(key)
-        var head: Hashingnode<K, V>? = bucketArray[bucketIndex]
+        var head: Hashingnode1<K, V>? = bucketArray[bucketIndex]
 
         // Search key in chain
 
@@ -169,7 +169,7 @@ fun main (args: Array<String>){
     map.add("maryam","hosptail")
 
 
-   map.get("aboody")
+   map.get("muhmmed")
 
 
 }

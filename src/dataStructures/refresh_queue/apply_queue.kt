@@ -11,7 +11,6 @@ val anonymousclass = object :shop{
 
 }
 
-Test({ anonymousclass(3) })
 }
 fun pr(){
     println("Hello number")

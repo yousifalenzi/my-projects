@@ -4,16 +4,16 @@ package JustTry.Higher_Order_Function_and_Lambda
 
 fun main(){
 
-  "king".high<String,Int> {
-       println(this.toUpperCase())
-      12
-  }
+//  "king".high<String,Int> {
+//       println(this.toUpperCase())
+//      12
+//  }
 
-    val h = Higher_Order_Function_and_Lambda_class()
-      h.doing<String> {
-          "yousif".tocamel()
-
-      }
+//    val h = JustTry.Higher_Order_Function_and_Lambda.Higher_Order_Function_and_Lambda_class()
+//      h.doing<String> {
+//          "yousif".tocamel()
+//
+//      }
 
 }
 fun String.pr()= println(this)
