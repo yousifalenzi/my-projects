@@ -1,4 +1,4 @@
-package dataStructures.hash_youssef
+package dataStructures.yousif_projects
 
 import java.util.*
 import kotlin.collections.ArrayList
@@ -18,6 +18,7 @@ public class LinearProbing<K,V>(private val size:Int) {
 
         HashArry=Array(this.size,{null})
         Null_Position= ArrayList<Int>()
+
     }
     //--------------------------public functions--------------------------------------//
 
