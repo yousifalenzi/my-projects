@@ -131,7 +131,7 @@ class CircularLinkedList_apply {
 
 
     }
-    fun printAll_fromTail(){
+    fun reverse(){
 
         println("START PRINT FROM TAIL ")
 
