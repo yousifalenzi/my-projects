@@ -14,7 +14,7 @@ class StackLinkedList<T> {
     fun getFirstIn():T? = this.bottom?.data
     fun getLastIn():T? = this.top?.data
 
-    fun peek():Any{
+    fun peek():Boolean{
         return if (this.length>0){
 
             var next= this.top
@@ -30,23 +30,22 @@ class StackLinkedList<T> {
 
 
     }
-    fun push(value:T){
+    fun push(value:T):T?{
         val newed = Node<T>(value)
         if (this.top==null){
             this.top = newed
             this.bottom = newed
             this.length++
+            return newed.data
         }else{
             val holdingPointer = this.top
             this.top = newed
             this.top!!.nextStack = holdingPointer
             this.length++
-        }
+            return newed.data
+        } }
 
 
-
-
-    }
     fun pop(): Any? {
 
         return if (this.length>0){
