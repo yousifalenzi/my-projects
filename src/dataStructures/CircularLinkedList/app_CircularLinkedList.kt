@@ -17,7 +17,7 @@ class CircularLinkedList_apply {
 
 
 
-    fun append(data:Any){
+    fun append(data:Any){// add last
       val newnode = node(data)
 
         if (tail==null){
@@ -37,9 +37,9 @@ class CircularLinkedList_apply {
 
         }
 
-    } // add last
+    }
     fun prepend(data:Any){
-
+// add first
         val newnode = node(data)
 
         if (this.Head==null){
@@ -56,8 +56,8 @@ class CircularLinkedList_apply {
         }
 
 
-    } // add first
-    fun insert(i:Int,data:Any){
+    }
+    fun insert(i:Int,data:Any){//o(n)
         val newnode = node(data)
 
         if (i>=index&&this.tail!=null&&this.Head!=null){
@@ -131,7 +131,7 @@ class CircularLinkedList_apply {
 
 
     }
-    fun reverse(){
+    fun fromtail(){
 
         println("START PRINT FROM TAIL ")
 
@@ -175,6 +175,24 @@ class CircularLinkedList_apply {
         return  null
 
     }
+    fun reverse(){
+
+
+        var first = this.Head
+        this.tail = this.Head
+
+        var second = first?.next
+        while (second!=null){
+
+            val temp = second.next//null
+            second.next = first//14
+            first=second // 22
+            second=temp //null
+
+        }
+        this.Head?.next = null
+        this.Head = first
+    }
 
     private fun getPosition(i: Int): node? {
 
@@ -194,25 +212,11 @@ fun main(){
 
    val linked = CircularLinkedList_apply()
 
-    linked.prepend(14)
-    linked.prepend("google")
-    linked.prepend("hello")
-    linked.prepend(22.4f)
-    linked.prepend(25.1)
-    linked.append(false)
-    val no = node("cold")
-    linked.append(no)
+    linked.insert(4,12)
+    linked.insert(4,14)
+    linked.append(4)
 
-    linked.insert(2,23)
-    linked.insert(0,11)
-    linked.insert(11,21)
-
-    linked.prepend(27)
-
-    linked.insert(8,132)
-    linked.insert(4,112)
-
-   linked.printAll_fromHead()
+    linked.printAll_fromHead()
 
 
 
