@@ -5,16 +5,18 @@ fun main (){
 
     val stackArrayList = StackArrayList<Any>()
     stackArrayList.push(12)
-    stackArrayList.push(14)
-    stackArrayList.push("yousif")
-    stackArrayList.push("aqyal")
-    stackArrayList.push("bayan")
-    stackArrayList.pop()
-    stackArrayList.pop()
-    stackArrayList.pop()
-    stackArrayList.pop()
+    stackArrayList.push(56)
+    stackArrayList.push(42)
+    stackArrayList.push(43)
+    stackArrayList.push(76)
+    stackArrayList.push(98)
 
 
+
+    stackArrayList.pop()
+    stackArrayList.pop()
+    println("first  "+stackArrayList.getFirstIn())
+    println("last  "+stackArrayList.getLastIn())
     stackArrayList.peek()
 
 }

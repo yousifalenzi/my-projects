@@ -13,20 +13,21 @@ class StackArrayList<T>{
         if (stackArray.isEmpty()){
 
             stackArray.add(data)
-            this.top = stackArray[stackArray.size - 1]
-            this.bottom = stackArray[stackArray.size - 1]
+            this.top = stackArray[stackArray.size-1]
+            this.bottom = this.top
         }
         else{
             stackArray.add(data)
-            this.top = stackArray[stackArray.size - 1]
+            this.top = stackArray[stackArray.size-1]
         }
 
     }
 
     fun pop():T?{
         return if (stackArray.isNotEmpty()){
-             val data = stackArray[stackArray.size - 1]
-            stackArray.removeAt(stackArray.size - 1)
+             val data = stackArray[stackArray.lastIndex]
+            stackArray.removeAt(stackArray.lastIndex)
+            this.top = stackArray[stackArray.lastIndex]
             data
         }else
          null
