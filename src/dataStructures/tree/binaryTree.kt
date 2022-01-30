@@ -1,17 +1,17 @@
 package treeNode
 
-class TreeNode(val vaule:Int){
-       private var v = vaule
+private data class TreeNode(val vaule:Int){
         var leftNode: TreeNode?=null
         var rightNode: TreeNode?=null
 
 }
-class binarytree {
 
-    var root: TreeNode? = null
+class DataTree {
+
+    private var root: TreeNode? = null
 
     fun addNode(i: Int) {
-        var newTreeNode = TreeNode(i)
+        val newTreeNode = TreeNode(i)
         if (root == null) {
             root = newTreeNode
         } else {
@@ -46,7 +46,7 @@ class binarytree {
 
 fun main() {
 
-    val binary = binarytree()
+    val binary = DataTree()
     binary.addNode(23)
     binary.addNode(12)
     binary.addNode(10)

@@ -1,14 +1,14 @@
 package dataStructures.tree
 
 
-class treeNode<T>(v:T){
+class dataTreeNode<T>(v:T){
 
     var vaule= v
-    var parent :treeNode<T>?=null
+    var parent :dataTreeNode<T>?=null
 
-    var children:MutableList<treeNode<T>> = mutableListOf()
+    var children:MutableList<dataTreeNode<T>> = mutableListOf()
 
-    fun addchild(node:treeNode<T>){
+    fun addchild(node:dataTreeNode<T>){
         children.add(node)
         node.parent=this
 
@@ -24,35 +24,39 @@ class treeNode<T>(v:T){
 
 }
 fun main(){
-    val milk =treeNode<String>("milk")
-    val Beverages =treeNode<String>("Beverages")
-    val Curd =treeNode<String>("Curd")
+    val milk =dataTreeNode<String>("milk")
+    val Beverages =dataTreeNode<String>("Beverages")
+    val Curd =dataTreeNode<String>("Curd")
 
     milk.addchild(Beverages)
     milk.addchild(Curd)
 
-    val teaNode = treeNode<String>( "tea")
-    val coffeeNode = treeNode<String>( "coffee")
-    val milkShakeNode = treeNode<String>( "Milk Shake")
+    val teaNode = dataTreeNode<String>( "tea")
+    val coffeeNode = dataTreeNode<String>( "coffee")
+    val milkShakeNode = dataTreeNode<String>( "Milk Shake")
 
     Beverages.addchild(teaNode)
     Beverages.addchild(coffeeNode)
     Beverages.addchild(milkShakeNode)
 
-    val gingerTeaNode = treeNode<String>( "ginger tea")
-    val normalTeaNode = treeNode<String>( "normal tea")
+    val gingerTeaNode = dataTreeNode<String>( "ginger tea")
+    val normalTeaNode = dataTreeNode<String>( "normal tea")
 
     teaNode.addchild(gingerTeaNode)
     teaNode.addchild(normalTeaNode)
 
-    val yogurtNode = treeNode<String>( "yogurt")
-    val lassiNode = treeNode<String>( "lassi")
+    val yogurtNode = dataTreeNode<String>( "yogurt")
+    val lassiNode = dataTreeNode<String>( "lassi")
 
     Curd.addchild(yogurtNode)
     Curd.addchild(lassiNode)
 
 
     println(milk.children)
+
+    for (item in milk.children.iterator()){
+        println(item.parent)
+    }
 
 
 }

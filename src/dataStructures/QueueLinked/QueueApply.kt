@@ -4,32 +4,21 @@ package dataStructures.QueueLinked
 fun main (){
 
     val queueing = QueueLinked<Any>()
-    queueing.enqueue(12)
-    queueing.enqueue(14)
-    queueing.enqueue(18)
-    queueing.enqueue(11)
-    queueing.enqueue(23)
-    queueing.enqueue(17)
-    queueing.enqueue(53)
-    queueing.dequeue()
-    queueing.dequeue()
-    queueing.dequeue()
-    queueing.dequeue()
+    queueing.enqueue("bayan")
+    queueing.enqueue("yousif")
+    queueing.enqueue("lola")
+    queueing.enqueue("maryam")
+    queueing.enqueue("naif")
+    queueing.enqueue("omar")
+    queueing.enqueue("muath")
     queueing.dequeue()
     queueing.dequeue()
     queueing.dequeue()
 
+     queueing.first()
+     queueing.last()
 
-    queueing.enqueue(53)
-
-    println("First "+queueing.first())
-    println("Last "+queueing.last())
-    queueing.enqueue(11)
-    println("First "+queueing.first())
-    println("Last "+queueing.last())
-    queueing.dequeue()
-    println("First "+queueing.first())
-    println("Last "+queueing.last())
     queueing.peek()
+
 
 }
