@@ -3,20 +3,20 @@ package dataStructures.tree
 import java.util.*
 
 
- data class TreeNode(var key:Int, var vaule:String){
+ data class TreennNode222(var key:Int, var vaule:String){
 
-    var leftTreeNode:TreeNode?=null
-    var rightTreeNode:TreeNode?=null
+    var leftTreeNode:TreennNode222?=null
+    var rightTreeNode:TreennNode222?=null
 }
 
 class BinaryTreeSearch{
 
-    private var root :TreeNode?=null
+    private var root :TreennNode222?=null
 
 
     fun InsertNode(key:Int,Vaule:String){ //O(log N)
 
-        val newNode=TreeNode(key,Vaule)
+        val newNode=TreennNode222(key,Vaule)
 
         if (root==null){
             root = newNode
@@ -24,7 +24,7 @@ class BinaryTreeSearch{
         else{
 
             var currentNode=root
-            var parent :TreeNode
+            var parent :TreennNode222
 
             while (true){
 
@@ -48,9 +48,9 @@ class BinaryTreeSearch{
             }
         }
     }
-    fun getMax(): TreeNode? {//O(log N)
+    fun getMax(): TreennNode222? {//O(log N)
       var root_ = root
-      var parent :TreeNode?=null
+      var parent :TreennNode222?=null
 
       while (root_!=null ){
           parent=root_
@@ -59,9 +59,9 @@ class BinaryTreeSearch{
       }
       return parent
   }
-    fun getMin(): TreeNode? {//O(log N)
+    fun getMin(): TreennNode222? {//O(log N)
         var root_ = root
-        var parent :TreeNode?=null
+        var parent :TreennNode222?=null
         while (root_!=null ){
 
              parent=root_
@@ -74,8 +74,8 @@ class BinaryTreeSearch{
 
     fun DeleteNode(key: Int):Boolean{
         //Initialize variables
-        var current :TreeNode?=root
-        var parent :TreeNode? = root
+        var current :TreennNode222?=root
+        var parent :TreennNode222? = root
         var isLeft =false
 
 
@@ -179,13 +179,13 @@ class BinaryTreeSearch{
     }
 
 
-    private fun getSuccessor(treeNode:TreeNode):TreeNode?{
+    private fun getSuccessor(treeNode:TreennNode222):TreennNode222?{
 
-        var parent :TreeNode? = treeNode
+        var parent :TreennNode222? = treeNode
 
-        var currentVAULE :TreeNode? = treeNode
+        var currentVAULE :TreennNode222? = treeNode
 
-        var pionter:TreeNode? = treeNode.rightTreeNode
+        var pionter:TreennNode222? = treeNode.rightTreeNode
 
         while (pionter!=null){
             parent = currentVAULE//81
@@ -204,7 +204,7 @@ class BinaryTreeSearch{
 
         return currentVAULE
     }
-    private fun successor(treeNode:TreeNode):TreeNode{
+    private fun successor(treeNode:TreennNode222):TreennNode222{
         var successorParent = treeNode
         var successor=treeNode
 
@@ -225,7 +225,7 @@ class BinaryTreeSearch{
         return successor
     }
     fun displayTree() {
-        val globalStack: Stack<TreeNode> = Stack<TreeNode>()
+        val globalStack: Stack<TreennNode222> = Stack<TreennNode222>()
         globalStack.push(root )
         var nBlanks = 32
         var isRowEmpty = false
@@ -233,7 +233,7 @@ class BinaryTreeSearch{
 
 
         while (isRowEmpty == false) {
-            val localStack: Stack<TreeNode> = Stack<TreeNode>()
+            val localStack: Stack<TreennNode222> = Stack<TreennNode222>()
             isRowEmpty = true
             for (j in 0 until nBlanks) {
                 print(" ")
@@ -241,7 +241,7 @@ class BinaryTreeSearch{
 
 
             while (globalStack.isEmpty() == false) {
-                val temp = globalStack.pop() as TreeNode?
+                val temp = globalStack.pop() as TreennNode222?
                 if (temp != null) {
                     print(temp.vaule)
                     localStack.push(temp.leftTreeNode )

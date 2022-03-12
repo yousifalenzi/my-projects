@@ -46,12 +46,6 @@ class DataTree {
 
 fun main() {
 
-    val binary = DataTree()
-    binary.addNode(23)
-    binary.addNode(12)
-    binary.addNode(10)
-    binary.addNode(14)
-    binary.addNode(25)
 
 
 

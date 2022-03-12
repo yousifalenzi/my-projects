@@ -2,29 +2,29 @@ package dataStructures.tree
 
 import java.util.*
 
-class NodeTree(val key1:Int,val data1:String){
+class treenode22<T>(val key1:Int, val data1:String){
 
 
-    var leftNode:NodeTree?=null
-    var rightNode:NodeTree?=null
+    var leftNode:treenode22<T>?=null
+    var rightNode:treenode22<T>?=null
 
 }
-class TreeData  {
+class TreeData  <T>{
 
-    private var Root:NodeTree?=null
+    private var root:treenode22<T>?=null
 
      //اسناد قيمه للشجره
     fun setData(key1:Int,Data:String){
 
-         val newNode=NodeTree(key1,Data)
+         val newNode=treenode22<T>(key1,Data)
 
-            if (Root==null) Root = newNode
+            if (root ==null) root = newNode
 
 
             else{
 
-                var current = Root
-                var parent:NodeTree
+                var current = root
+                var parent:treenode22<T>?
 
 
                  while (true){
@@ -57,9 +57,9 @@ class TreeData  {
     }
 
     //ايجاد الاصغر
-    fun findMin(): NodeTree? {
-           var min = Root
-           var parent_min:NodeTree?=null
+    fun findMin(): treenode22<T>? {
+           var min = root
+           var parent_min:treenode22<T>?=null
         while (min!=null){
             parent_min=min
             min=min.leftNode
@@ -68,9 +68,9 @@ class TreeData  {
     }
 
     //ايجاد الاكبر
-    fun findMax(): NodeTree? {
-        var max = Root
-        var parent_max:NodeTree?=null
+    fun findMax():treenode22<T>? {
+        var max = root
+        var parent_max:treenode22<T>?=null
         while (max!=null){
             parent_max=max
             max=max.rightNode
@@ -81,8 +81,8 @@ class TreeData  {
     //حذف نود
     fun removeNode(key:Int):Boolean{
            //start from root of the dataStructures.tree
-           var currentNode = Root
-           var parentNode = Root
+           var currentNode = root
+           var parentNode = root
            var IsLeftChild = false
 
 
@@ -109,7 +109,7 @@ class TreeData  {
            //is Leaf Node (no children) Scenario
         if(NodeFound.rightNode==null&&NodeFound.leftNode==null){
 
-              if (NodeFound==Root)Root=null
+              if (NodeFound== root) root =null
               else if (IsLeftChild)parentNode?.leftNode= null
               else  parentNode?.rightNode=null
 
@@ -119,7 +119,7 @@ class TreeData  {
            //has one child on the left
 
            else if(NodeFound.rightNode==null){
-               if (NodeFound==Root)Root= NodeFound.leftNode
+               if (NodeFound== root) root = NodeFound.leftNode
                else if (IsLeftChild) parentNode?.leftNode=NodeFound.leftNode
                else parentNode?.rightNode=NodeFound.leftNode
 
@@ -128,7 +128,7 @@ class TreeData  {
            //has one child on the right
 
            else if(NodeFound.leftNode==null){
-               if (NodeFound==Root)Root= NodeFound.rightNode
+               if (NodeFound== root) root = NodeFound.rightNode
                else if (IsLeftChild) parentNode?.leftNode=NodeFound.rightNode
                else parentNode?.rightNode=NodeFound.rightNode
 
@@ -141,12 +141,12 @@ class TreeData  {
                val Successor = getSuccessor(NodeFound)// عثرنا على الوريث حفظه ورعاه
 
                when {
-                   NodeFound==Root -> Root= Successor
+                   NodeFound== root -> root = Successor
                    IsLeftChild -> parentNode?.leftNode=Successor
                    else -> parentNode?.rightNode = Successor
                }
 
-                Successor.leftNode = NodeFound.leftNode
+                Successor?.leftNode = NodeFound.leftNode
 
                //connect parent of NodeFound to Successor instead
             }
@@ -157,10 +157,10 @@ class TreeData  {
         return true
     }
 
-    private fun getSuccessor(nodeFound: NodeTree): NodeTree {
+    private fun getSuccessor(nodeFound:treenode22<T>?):treenode22<T>?{
            var GodFather = nodeFound//الاب الشرعي
            var Successor = nodeFound//خليفه العائله
-           var currentNode = nodeFound.rightNode//موشر للبحث في شجرة العائله
+           var currentNode = nodeFound?.rightNode//موشر للبحث في شجرة العائله
 
         while (currentNode!=null){
 
@@ -169,10 +169,10 @@ class TreeData  {
             currentNode=currentNode.leftNode//1
         }
 
-          if (Successor!=nodeFound.rightNode){
+          if (Successor!=nodeFound?.rightNode){
 
-              GodFather.leftNode = Successor.rightNode
-              Successor.rightNode = nodeFound.rightNode
+              GodFather?.leftNode = Successor?.rightNode
+              Successor?.rightNode = nodeFound?.rightNode
 
           }
 
@@ -183,7 +183,7 @@ class TreeData  {
 
     fun getData(key: Int):String?{
 
-           var fromRoot = Root
+           var fromRoot = root
          while (true){
              if (key< fromRoot!!.key1) fromRoot = fromRoot.leftNode
              else fromRoot=fromRoot.rightNode
@@ -197,14 +197,14 @@ class TreeData  {
 
       fun displayDataTree(){
 
-          val generalStack =Stack<NodeTree>()
-           generalStack.push(Root)
+          val generalStack =Stack<treenode22<T>?>()
+           generalStack.push(root)
           var blanks = 31
           var isRowEmpty = false
           println("*******************************")
 
           while (isRowEmpty==false){
-              val InsiderStack:Stack<NodeTree>  = Stack<NodeTree>()
+              val InsiderStack:Stack<treenode22<T>?>  = Stack<treenode22<T>?>()
 
                isRowEmpty= true
                for (i in 0 until blanks){
@@ -248,14 +248,14 @@ class TreeData  {
 
       fun displayTree(){
 
-        val globalStack = Stack<NodeTree>()
-         globalStack.push(Root)
+        val globalStack = Stack<treenode22<T>?>()
+         globalStack.push(root)
         var nBlanks = 2
         var isRowEmpty = false
         println("......................................................")
 
         while (isRowEmpty==false){
-            val localStack:Stack<NodeTree>  = Stack<NodeTree>()
+            val localStack:Stack<treenode22<T>?>  = Stack<treenode22<T>?>()
             isRowEmpty=true
             for(i in 0 until nBlanks) print("")
 
@@ -264,7 +264,7 @@ class TreeData  {
 
             while (globalStack.isEmpty()==false){
 
-                val temp = globalStack.pop() as NodeTree? // global = null ,temp = root
+                val temp = globalStack.pop() as treenode22<T>?? // global = null ,temp = root
                 if (temp!=null){
 
                     print(temp.key1)
@@ -306,7 +306,7 @@ class TreeData  {
 
 fun main(){
 
-    val trree = TreeData()
+    val trree = TreeData<String>()
     //right
     trree.setData(50,"yousif")
     trree.setData(55,"fahad")
