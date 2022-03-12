@@ -49,27 +49,10 @@ class avl_kotlin {
 
          // If this node becomes unbalanced, then there
          // are 4 cases Left Left Case
-         if (balance > 1 && item < node.left!!.item)
-         return rotateRight(node)!!;
-
-         // Right Right Case
-         else if (balance < -1 && item > node.right!!.item)
-             return rotateLeft(node)!!;
+         //or /* return the (unchanged) node pointer */
+         return rbalance(balance,item,node)!!
 
 
-         // Left Right Case
-         else if (balance > 1 && item > node.left!!.item) {
-             node.left = rotateLeft(node.left);
-             return rotateRight(node)!!;
-         }
-         // Right Left Case
-         else if (balance < -1 && item < node.right!!.item) {
-             node.right = rotateRight(node.right);
-             return rotateLeft(node)!!;
-         }
-
-         /* return the (unchanged) node pointer */
-         return node;
     }
      fun printTree(currPtr: Node23?, indent: String?, last: Boolean) {
         var indent1 = indent
@@ -175,6 +158,28 @@ class avl_kotlin {
 
 
     //private functions
+    private fun rbalance(balance:Int,item: Int,node:Node23): Node23? {
+        if (balance > 1 && item < node.left!!.item)
+            return rotateRight(node)!!
+
+        // Right Right Case
+         else if (balance < -1 && item > node.right!!.item)
+            return rotateLeft(node)!!;
+
+
+        // Left Right Case
+        else if (balance > 1 && item > node.left!!.item) {
+            node.left = rotateLeft(node.left);
+            return rotateRight(node)!!;
+        }
+        // Right Left Case
+        else if (balance < -1 && item < node.right!!.item) {
+            node.right = rotateRight(node.right);
+            return rotateLeft(node)!!;
+        }
+        else
+        return node
+    }
     private fun height(node :Node23?): Int {
         return node?.height ?: 0
     }
