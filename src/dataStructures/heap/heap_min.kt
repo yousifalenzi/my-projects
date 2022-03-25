@@ -146,7 +146,7 @@ fun main(){
 
 
 
-      val h = heap_min(7)
+      val h = dataStructures.heap.heap_min(7)
         h.insert_MinWay(17)
         h.insert_MinWay(99)
         h.insert_MinWay(26)

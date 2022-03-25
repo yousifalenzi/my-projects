@@ -126,8 +126,8 @@ class heap (val size:Int){
 
         while (index<level_for_heap_tree){
 
-            var leftchild = (2*index)+1 //طريقه تحديد الطفل في الجهه اليسار للاب
-            var rightchild =leftchild+1 //طريقه تحديد الطفل في الجهه اليمين للاب
+            val leftchild = (2*index)+1 //طريقه تحديد الطفل في الجهه اليسار للاب
+            val rightchild =leftchild+1 //طريقه تحديد الطفل في الجهه اليمين للاب
 
             if (rightchild<currentsize&&array[leftchild]<array[rightchild]){
 
@@ -165,8 +165,8 @@ class heap (val size:Int){
 
            while (Idx<y_table){
 
-               var leftchildIdx = (2*Idx)+1 // 1
-               var rightchildIdx = leftchildIdx+1 //2
+               val leftchildIdx = (2*Idx)+1 // 1
+               val rightchildIdx = leftchildIdx+1 //2
 
                if (rightchildIdx<currentsize&&array[leftchildIdx]<array[rightchildIdx]){
 

@@ -3,7 +3,7 @@ package dataStructures.avl_kotlin
 import java.util.*
 
 // AVL tree implementation in Kotlin
- open class Node23(var item: Int) {
+ data class Node23(var item: Int) {
     var height = 1
     var left: Node23? = null
     var right: Node23? = null
@@ -50,7 +50,7 @@ class avl_kotlin {
          // If this node becomes unbalanced, then there
          // are 4 cases Left Left Case
          //or /* return the (unchanged) node pointer */
-         return rbalance(balance,item,node)!!
+         return rebalanced(balance,item,node)!!
 
 
     }
@@ -158,7 +158,7 @@ class avl_kotlin {
 
 
     //private functions
-    private fun rbalance(balance:Int,item: Int,node:Node23): Node23? {
+    private fun rebalanced(balance:Int, item: Int, node:Node23): Node23? {
         if (balance > 1 && item < node.left!!.item)
             return rotateRight(node)!!
 
