@@ -3,17 +3,17 @@ package dataStructures.Graphs
 import java.util.ArrayList
 
 data class GraphsNode(var data :Int?=null){
-    var adjacencyList= HashMap<Int,GraphsNode?>()
-    var KeySet= HashSet<Int>()
-    var Num =  0
+    private var adjacencyList= HashMap<Int,GraphsNode?>()
+    private var key= HashSet<Int>()
+    private var num =  0
 
+    fun getNumOfEdge():Int=num
+    fun setNum(num1: Int){ this.num = num1 }
 
-    companion object Insider{
+    fun getSetKey()=key
+    fun adjacencyList()=adjacencyList
+    companion object { var numbersOfNodes = 0 }
 
-        var numbersOfNodes = 0
-
-    }
-     fun getNumOfEdge():Int=Num
 }
 class Graph {
         private val vertexes= ArrayList<GraphsNode?>()
@@ -31,108 +31,108 @@ class Graph {
     }
       fun addEdge (indexStart:Int,indexEnd:Int):Boolean{
 
-        if (indexStart<this.vertexes.size&&indexEnd<this.vertexes.size
-                &&indexStart>-1&&indexEnd>-1){
+          return if (indexStart<this.vertexes.size&&indexEnd<this.vertexes.size
+                  &&indexStart>-1&&indexEnd>-1) {
 
 
-            val startIndex = this.vertexes.get(indexStart)
-            val EndtIndex = this.vertexes.get(indexEnd)
+              val startIndex = this.vertexes[indexStart]
+              val endIndex = this.vertexes[indexEnd]
 
-            if (startIndex != null) {
-                startIndex.adjacencyList.put(indexEnd,EndtIndex)
-                startIndex.Num++
-                EndtIndex!!.KeySet.add(indexStart)
-            }
-            return true
+              if (startIndex != null) {
+                  startIndex.adjacencyList()[indexEnd] = endIndex
 
-        }
-         return false
-    }
+                  val numOfEdge = startIndex.getNumOfEdge()
+                  startIndex.setNum(numOfEdge+1)
+
+                  endIndex!!.getSetKey().add(indexStart)
+              }
+              true
+
+          } else false
+      }
 
 
 
       //delete functions
        fun removeEdge(Index:Int,target: Int):Int?{
-             if (Index<this.vertexes.size&&Index>-1){
-                 val graphsNode = this.vertexes[Index]
-                 val contains = this.vertexes[Index]?.adjacencyList
+          if (!verification(target)) return null
+          val graphsNode = this.vertexes[Index]
+          val contains = this.vertexes[Index]?.adjacencyList()
 
-                 if (contains?.contains(target)==true){
-                     graphsNode!!.Num--
-                     val data = contains.get(target)?.data
+          if (contains?.contains(target)==true){
+              val numOfEdge = graphsNode?.getNumOfEdge()
+              graphsNode?.setNum(numOfEdge!! -1)
 
-                     this.vertexes[Index]?.adjacencyList?.remove(target)
-                     return data
-                 }
+              val data = contains.get(target)?.data
 
-             }
-        return null
+              this.vertexes[Index]?.adjacencyList()?.remove(target)
+              return data
+          }
+          return null
     }
        fun removeVertex(target: Int):Boolean{
-        if (target<this.vertexes.size&&target>-1){
-            remove = target
-            this.vertexes[target]?.let { updateEdgeLinks(it) }
-            this.vertexes.removeAt(target)
-            GraphsNode.numbersOfNodes--
-            return true
-
-        }
-          return false
-    }
+           if (!verification(target)) {
+               return false
+           }
+           remove = target
+           this.vertexes[target]?.let { updateEdgeLinks(it) }
+           this.vertexes.removeAt(target)
+           GraphsNode.numbersOfNodes--
+           return true
+       }
 
 
 
        //Adjustment functions
       fun editVertexValue(target: Int, value:Int){
-          if (target<this.vertexes.size&&target>-1){
-                 this.vertexes[target]!!.data = value
+           if (!verification(target)) return
+           this.vertexes[target]!!.data = value
 
+       }
 
-
-          }
-
-      }
 
 
 
       //access functions
-      fun printAll(){
+       fun printAll(){
+          if (this.vertexes.size > 0) {
+              println("*------------------*")
 
-          println("*------------------*")
+              var i = 0
+              for(data in this.vertexes.iterator()){
 
-           var i = 0
-          for(data in this.vertexes.iterator()){
-
-              println("${i++} / ${data?.data} ----->${data?.adjacencyList}")
+                  println("${i++} / ${data?.data} ----->${data?.adjacencyList()}")
+              }
+              println("NumOfVertex = "+getNumOfVertex())
+              println("*------------------*")
           }
-          println("NumOfVertex = "+getNumOfVertex())
-          println("*------------------*")
+      }
+       fun getNumOfEdges(){
+           if (this.vertexes.size > 0){
+               println("*------------------*")
+               for (num in this.vertexes.iterator()){
 
+                   println("$num is content {${num?.getNumOfEdge()}} Edge ----{${num?.adjacencyList()?.keys}}")
+               }
+               println("*------------------*")
+           }
 
-
-
-     }
-      fun getNumOfEdges(){
-           println("*------------------*")
-        for (num in this.vertexes.iterator()){
-
-            println("$num is content {${num?.Num}} Edge")
-        }
-          println("*------------------*")
 
       }
 
-    //private functions
+
+    //private functions && verification functions
     private fun updateEdgeLinks(node: GraphsNode) {
 
-            for (data in node.KeySet.iterator()){
-            if(this.vertexes[data]?.adjacencyList?.containsValue(node) == true){
+            for (data in node.getSetKey().iterator()){
+            if(this.vertexes[data]?.adjacencyList()?.containsValue(node) == true){
 
-                this.vertexes[data]?.adjacencyList?.remove(remove)
+                this.vertexes[data]?.adjacencyList()?.remove(remove)
             }
         }
     }
     private fun getNumOfVertex():Int = GraphsNode.numbersOfNodes
+    private fun verification(target: Int): Boolean = (target<this.vertexes.size&&target>-1)
 
 
 }
@@ -154,6 +154,7 @@ fun main(){
 
     gra.addEdge(3,4)
     gra.removeEdge(2,3)
+
     gra.printAll()
     gra.getNumOfEdges()
 
