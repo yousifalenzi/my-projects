@@ -57,11 +57,11 @@ class Graph {
        fun removeEdge(Index:Int,target: Int):Int?{
           if (!verification(target)) return null
           val graphsNode = this.vertexes[Index]
-          val contains = this.vertexes[Index]?.adjacencyList()
+          val contains = graphsNode?.adjacencyList()
 
           if (contains?.contains(target)==true){
-              val numOfEdge = graphsNode?.getNumOfEdge()
-              graphsNode?.setNum(numOfEdge!! -1)
+              val numOfEdge = graphsNode.getNumOfEdge()
+              graphsNode.setNum(numOfEdge-1)
 
               val data = contains.get(target)?.data
 
