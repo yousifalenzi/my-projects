@@ -29,26 +29,26 @@ class Graph {
         vertexes.add(newNode)
          return this
     }
-      fun addEdge (indexStart:Int,indexEnd:Int):Boolean{
+      fun addEdge (vertexIndx:Int,TargetVertex:Int):Boolean{
 
-          return if (indexStart<this.vertexes.size&&indexEnd<this.vertexes.size
-                  &&indexStart>-1&&indexEnd>-1) {
+           if (!verification(vertexIndx) || !verification(TargetVertex)) return false
+              val startIndex = this.vertexes[vertexIndx]
+              val endIndex = this.vertexes[TargetVertex]
 
 
-              val startIndex = this.vertexes[indexStart]
-              val endIndex = this.vertexes[indexEnd]
 
-              if (startIndex != null) {
-                  startIndex.adjacencyList()[indexEnd] = endIndex
+          if (endIndex?.getSetKey()?.contains(vertexIndx) == true)return false
+              if (startIndex != null&& endIndex != null) {
+                  startIndex.adjacencyList()[TargetVertex] = endIndex
 
                   val numOfEdge = startIndex.getNumOfEdge()
                   startIndex.setNum(numOfEdge+1)
+                  endIndex.getSetKey().add(vertexIndx)
+                  return true
 
-                  endIndex!!.getSetKey().add(indexStart)
               }
-              true
+              return false
 
-          } else false
       }
 
 
@@ -153,7 +153,9 @@ fun main(){
     gra.addEdge(2,3)
 
     gra.addEdge(3,4)
-    gra.removeEdge(2,3)
+    gra.removeEdge(2,1)
+    gra.addEdge(4,2)
+    gra.addEdge(0,1)
 
     gra.printAll()
     gra.getNumOfEdges()
