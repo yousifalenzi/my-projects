@@ -52,9 +52,18 @@ class MyGraph (val vcount:Int) {// length of array
 
 }
 
-
+ data class node (val data: Int)
 fun main(args:Array<String>){
 
+    var node1:node? = node(2)
 
+
+    val hash = HashMap<Int,node?>()
+    hash.put(0 , node1)
+    node1 = null
+    for (hash in hash.iterator()){
+
+        println(hash.value)
+    }
 
 }

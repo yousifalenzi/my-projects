@@ -24,5 +24,7 @@ fun main (){
         makeword.getAll(node)
     }
 
+
+
 }
 
