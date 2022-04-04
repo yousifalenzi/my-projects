@@ -1,4 +1,4 @@
-package sortAlgorthm.quickSort
+package SortAlgorthm.quickSort
 
 
 class geeks_quickSort {

@@ -1,4 +1,4 @@
-package sortAlgorthm.mmerge
+package SortAlgorthm.mmerge
 
 /* Java program for Merge Sort */
 class MergeSort {

@@ -1,4 +1,4 @@
-package sortAlgorthm.mmerge
+package SortAlgorthm.mmerge
 
 class merge_sort_newTechne {
 
