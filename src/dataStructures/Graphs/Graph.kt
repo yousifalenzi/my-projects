@@ -134,7 +134,6 @@ class Graph {
     private fun getNumOfVertex():Int = GraphsNode.numbersOfNodes
     private fun verification(target: Int): Boolean = (target<this.vertexes.size&&target>-1)
 
-
 }
 
 fun main(){
