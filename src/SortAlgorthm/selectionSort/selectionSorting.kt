@@ -4,30 +4,20 @@ class selectionSorting {
 
 
 
-    fun selectionSorting_(array:IntArray):IntArray{
+    fun selectionSorting(array:IntArray):IntArray{
 
-        var arr = array
+          for (x in 0 until array.size-1){
+              var min = x
 
+              for (j in x+1 until array.size){
 
-          for (x in 0 until arr.size-1){
-              var mim = x//0
+                  if (array[j]<array[min])min=j
 
-              for (j in x+1 until arr.size){
-
-                  if (arr[j]<arr[mim]){//[1]<[0]
-
-                      mim=j//
-                  }
               }
-            var tem = arr[x]//2
-              arr[x]=arr[mim]//1
-              arr[mim]= tem//2
+              val tem = array[x]
+              array[x]=array[min]
+              array[min]= tem
           }
-
-
-        return arr
-
-
-
+        return array
     }
 }
