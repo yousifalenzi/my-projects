@@ -3,7 +3,7 @@ package SortAlgorthm.selectionSort;
 public class selectionsort {
 
 
-    public int[]selectionSort(int[]array){
+    public static int[]selectionSort(int[]array){
 
           for (int i =0 ; i<array.length;i++){
               int min = i ;
@@ -24,11 +24,8 @@ public class selectionsort {
     public static void main(String args[])
     {
 
-        int []arr = {4,7,1,10,3,2} ;
-
-        selectionsort sort = new selectionsort() ;
-        int[] ints = sort.selectionSort(arr);
-
+        int []arr = {4,7,1,5,3,2,6} ;
+        int[] ints = selectionSort(arr);
         for (int i : ints){
 
             System.out.println(i);
