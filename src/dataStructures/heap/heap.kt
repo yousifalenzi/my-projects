@@ -34,9 +34,9 @@ class heap (val size:Int){
 
      private fun trickleup( idx: Int) {
 
-          var id = idx//5
-          var parentId=(id-1)/2
-          val node =array[id]
+          var id = idx//15
+          var parentId=(id-1)/2//1
+          val node =array[id]//15
 
           while (id>0&&array[parentId]<node){ //array[parentId]=66  <node=100
                     // array[idx] [1]=100

@@ -148,7 +148,7 @@ fun main(){
 
       val h = dataStructures.heap.heap_min(7)
         h.insert_MinWay(17)
-        h.insert_MinWay(99)
+        h.insert_MinWay(13)
         h.insert_MinWay(26)
         h.insert_MinWay(12)
         h.insert_MinWay(25)
@@ -158,6 +158,10 @@ fun main(){
 
     println("BIGEEST VAULE = ${h.GetBigger()}")
       println("SMALLEST VAULE = ${h.GetSmallest()}")
+
+    for (i in 0 until 3){
+        println("${h.remove() }, ")
+    }
 
 
     h.print_like_tree()
