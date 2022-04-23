@@ -1,5 +1,7 @@
 package dataStructures.heap;
 
+import java.util.Random;
+
 public class heaping {
 
     int[] Heapfiy_Max(int[] arr, int n, int k) {
@@ -51,7 +53,6 @@ public class heaping {
 
         return sorting(arr) ;
     }
-
     private static int[] sorting(int[] arr) {
 
         for (int i =1;i<arr.length;i++){
@@ -101,7 +102,7 @@ public class heaping {
 
         }
 
-     return arr ;
+        return arr ;
 
     }
     private static int[] setChild(int left, int position, int right) {
@@ -121,15 +122,23 @@ public class heaping {
         arr[pos]=value;
         return pos;
     }
+
+
     public static void main (String [] args ){
 
 
-        int [] ar = {3,2,5,7,9,10,1,4,0,6,8};
+        int [] ar = new int[10];
+
+        for (int i =0 ;i<ar.length;i++){
+            ar[i] =new Random().nextInt(100);
+        }
+
+
         heaping h = new heaping();
         int[] ints = h.Heapfiy_Max(ar, (ar.length) / 2, (ar.length - 2) / 2);
         int [] heapsort = heapSort(ints);
 
-        for (int i=0;i<heapsort.length-1;i++){
+        for (int i=0;i<heapsort.length;i++){
             System.out.print(heapsort[i]+",");
         }
     }

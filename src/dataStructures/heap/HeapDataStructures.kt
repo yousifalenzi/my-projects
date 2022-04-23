@@ -171,13 +171,13 @@ class HeapDataStructures {
                        arr[currentPosition]=lastItem
 
 
-                       //set child
+                       //Reset the children
                        var leftchild = 1
                        var rightchild = 2
-                         log = 0
+
                        while (leftchild<=remaining||rightchild<=remaining){
 
-                             log ++
+
 
                            if (leftchild<=remaining&&rightchild<=remaining){
                                currentPosition = if (arr[leftchild]>arr[currentPosition]&&arr[leftchild]>arr[rightchild]){
@@ -206,7 +206,7 @@ class HeapDataStructures {
                            rightchild = pair.second
                        }
 
-                       println("${i} , ${log}")
+
 
 
                    }
@@ -234,11 +234,7 @@ fun main (){
 
 
 
-    val ar = Array<Int>(10,{
-
-         Random().nextInt(15)
-
-    })
+    val ar = arrayOf(4,9,2,5,77,3,2,11,6,33)
 
 
 //    for (i in 0 until ar.size){
