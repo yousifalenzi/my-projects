@@ -1,5 +1,9 @@
 package SortAlgorthm.heapsort
 
+import dataStructures.queueData.queue
+import dataStructures.queueData.queue_anothrway
+import java.util.PriorityQueue
+
 
 val MAX_HEAP = "MAX"
 val MIN_HEAP = "MIN"
@@ -13,16 +17,62 @@ fun swap(array: Array<Int>,old:Int,new:Int){// 12
 
 
 }
+fun heapfiyMin(arr: Array<Int>, n: Int, k: Int) {
 
-fun Min_Heapfiy(Array:Array<Int>,n:Int,i:Int){ //  6 - 2
+    var min =  k
+    var left = 2*k+1
+    var right = left+1
 
-      val left = 2*i+1 // 5
-      val right = left+1//6
-      var largest = i//0
+    for (i in k downTo 0){
+
+        min = i
+        while (min<=n){
+            left = 2*min+1
+            right =left+1
+            val pointer = min
+
+            if (left<=arr.size-1&&arr[left]<arr[pointer]){
+                min = if (right>arr.size-1||arr[left]<arr[right]){
+
+                    left
+                } else{
+                    right
+                }
+
+            }
+
+            else if (right<=arr.size-1&&arr[right]<arr[pointer]){
+                min = if (left>arr.size-1||arr[right]<arr[left]){
+
+                    right
+                } else{
+                    right
+                }
+            }
+
+
+            else break
+
+            //swap
+
+            val data = arr[pointer]
+            arr[pointer] = arr[min]
+            arr[min] = data
+
+        }
+
+    }
+}
+
+fun Min_Heapfiy(Array:Array<Int>,n:Int,i:Int){ //
+
+      val left = 2*i+1
+      val right = left+1
+      var largest = i
 
     //checking for the smallest element
 
-    if (left<=n&&Array[left]>Array[i]){//  10
+    if (left<=n&&Array[left]<=Array[i]){//  10
                                      //  8  9
         //                             5,1 , 2,7
         largest = left //5
@@ -31,7 +81,7 @@ fun Min_Heapfiy(Array:Array<Int>,n:Int,i:Int){ //  6 - 2
         largest = i
     }
 
-    if (right<=n&&Array[right]>Array[largest])
+    if (right<=n&&Array[right]<Array[largest])
     {
         largest = right//2
     }
@@ -103,29 +153,43 @@ fun print_like_tree (Array:Array<Int>){
 
 
 fun main(){
-
-
-//   val arr = arrayOf(6,3,9,15,41,23,18)
-//    val startIdx: Int = arr.size / 2 - 1
+//    heapfiyMin(min,(min.size-2)/2,(min.size - 2) / 2)
+//    for (value in min){
 //
-//  for (i in startIdx downTo 0){
-//
-//      Min_Heapfiy(arr,arr.size-1,i)
-//  }
-//    print_like_tree(arr)
+//        print(" ${value} ")
+//    }
 
-    val m = 1000
-    var log = 0
-     var i = 0 //7521
+    val min = arrayOf(10,15,11,4,9,0,14)
+    val queue = PriorityQueue<Int>()
 
 
-        while (i<= m) {
-            log=log+9
-            i++
 
 
-        }
-    println("$log")
+    while (!queue.isEmpty()){
+
+        println(queue.poll())
+
+    }
+
+
+
+   val n =min.size
+
+    for (i in 0 until n) {
+        queue.add((-1)*min[i])
+    }
+    while (!queue.isEmpty()){
+
+       print("${(queue.poll())*(-1)}, ")
+
+
+    }
+
+
+
+
+
+
 
 
 }

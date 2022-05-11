@@ -1,12 +1,17 @@
 package sortAndsearch_Algorthm.mmerge
 
+import java.util.*
+
 
 class mergerSort_ahmed {
 
 
     fun sort (array: Array<Int>){
-
+        val startTime = System.nanoTime()
         sort(array,0,array.size-1)
+        val endTime = System.nanoTime()
+        val duration = endTime - startTime //divide by 1000000 to get milliseconds
+        println("TIME = ${(duration/1000000)/1000} Seconds")
     }
 
     private fun sort(array:Array<Int>,start:Int , end:Int){
@@ -74,4 +79,13 @@ class mergerSort_ahmed {
 
 
     }
+}
+
+fun main(){
+       val merge = mergerSort_ahmed()
+
+    val ar = Array<Int>(10000000,{it* Random().nextInt(12)})
+    merge.sort(ar)
+
+
 }

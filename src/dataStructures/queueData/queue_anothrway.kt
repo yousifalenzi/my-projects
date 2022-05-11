@@ -8,6 +8,7 @@ class queue_anothrway (val arraysize:Int){
     var rear:Int
     var capcity:Int
     var array:IntArray
+    var top :Int = 0
 
 
     init {
@@ -32,17 +33,19 @@ class queue_anothrway (val arraysize:Int){
     }
 
     fun enqueue(data:Int){
-
+          if (isEmpty(this)){this.top  =data}
         if (isFull(this))return//if full ,stop fun
         this.rear=(this.rear+1)%this.capcity
         this.array.set(this.rear,data)
         this.size=this.size+1
+
     }
     fun dequeue():Int{
         if (isEmpty(this))return Int.MIN_VALUE
-        var item =this.array.get(this.front)
+        val item =this.array.get(this.front)
         this.front =(this.front+1)%this.capcity
         this.size=this.size-1//4-1=3
+        this.top=array[front]
         return item
     }
     fun get_Front():Int{

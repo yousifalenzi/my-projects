@@ -1,20 +1,26 @@
 package SortAlgorthm.mmerge
 
+import dataStructures.heap.HeapDataStructures
+import java.util.*
+
 class merge_sort_newTechne {
 
 
-    fun mergeSort(arr:IntArray){
+    fun mergeSort(arr:Array<Int>){
 
         MergeSort(arr,arr.size)
+
+
+
     }
 
-    private fun MergeSort(array:IntArray, n :Int){   // L[25,8,11] R[4,12,32]
+    private fun MergeSort(array:Array<Int>, n:Int){   // L[25,8,11] R[4,12,32]
 
         if (n<2)return
 
         val mid = n/2
-        val L = IntArray(mid)
-        val R = IntArray(n-mid)
+        val L = Array<Int>(mid,{it*1})
+        val R = Array<Int>(n-mid,{it*1})
 
         for (i in 0 until  mid) { L[i] = array[i] }
         for (j in mid until n) { R[j-mid] = array[j] }
@@ -28,7 +34,7 @@ class merge_sort_newTechne {
 
     }
 
-    private fun merge(a: IntArray, l: IntArray, r:IntArray, left: Int, right: Int) {
+    private fun merge(a: Array<Int>, l: Array<Int>, r:Array<Int>, left: Int, right: Int) {
         var i = 0
         var j = 0
         var k = 0
@@ -46,4 +52,14 @@ class merge_sort_newTechne {
             a[k++] = r[j++]
         }
     }
+}
+fun main (){
+      val m = merge_sort_newTechne()
+    val ar = Array<Int>(10000000,{it* Random().nextInt(12)})
+
+      val merge  = m.mergeSort(ar)
+//    ar.forEach {
+//        print("${it},")
+//    }
+
 }

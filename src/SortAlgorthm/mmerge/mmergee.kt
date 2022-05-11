@@ -7,7 +7,7 @@ fun main (){
 
 
 //
-    val arr = IntArray(6)
+    val arr = Array<Int>(6,{it*1})
     arr[0] = 25
     arr[1] = 8
     arr[2] = 11

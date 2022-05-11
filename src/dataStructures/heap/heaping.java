@@ -1,10 +1,41 @@
 package dataStructures.heap;
 
+import java.util.Iterator;
+import java.util.PriorityQueue;
 import java.util.Random;
 
 public class heaping {
 
-    int[] Heapfiy_Max(int[] arr, int n, int k) {
+
+    int[] kLargest(int[] arr, int n, int k) {
+        //PriorityQueue to build min heap
+        PriorityQueue<Integer> numbers = new PriorityQueue<Integer>();
+
+        //add data in heap
+        for (int i =0 ; i<n;i++) {
+            numbers.add((-1)*arr[i]);
+        }
+
+        int[] array = new int[k] ;
+        int i = 0 ;
+
+        if (k<=numbers.size()){
+
+            while (!numbers.isEmpty()&&k>i){
+                array[i]=numbers.poll()*(-1);
+                i++;
+            }
+        }
+
+
+      return array ;
+
+    }
+
+
+
+
+        int[] Heapfiy_Max(int[] arr, int n, int k) {
 
         int large =  k;
         int left = 2*k+1;
@@ -49,6 +80,7 @@ public class heaping {
         }
         return arr ;
     }
+
     public static int [] heapSort(int [] arr){
 
         return sorting(arr) ;
@@ -125,21 +157,28 @@ public class heaping {
 
 
     public static void main (String [] args ){
-
-
-        int [] ar = new int[10];
-
-        for (int i =0 ;i<ar.length;i++){
-            ar[i] =new Random().nextInt(100);
-        }
-
+          int [] arr1 = {1, 23, 12, 9, 30, 2, 50};
 
         heaping h = new heaping();
-        int[] ints = h.Heapfiy_Max(ar, (ar.length) / 2, (ar.length - 2) / 2);
-        int [] heapsort = heapSort(ints);
+        int[] ints = h.kLargest(arr1, arr1.length, 3);
 
-        for (int i=0;i<heapsort.length;i++){
-            System.out.print(heapsort[i]+",");
+        for(int data : ints){
+            System.out.print(data+", ");
         }
+
+//        int [] ar = new int[10];
+//
+//        for (int i =0 ;i<ar.length;i++){
+//            ar[i] =new Random().nextInt(100);
+//        }
+//
+//
+//        heaping h = new heaping();
+//        int[] ints = h.Heapfiy_Max(ar, (ar.length) / 2, (ar.length - 2) / 2);
+//        int [] heapsort = heapSort(ints);
+//
+//        for (int i=0;i<heapsort.length;i++){
+//            System.out.print(heapsort[i]+",");
+//        }
     }
 }

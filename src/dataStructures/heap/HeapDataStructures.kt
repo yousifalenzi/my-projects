@@ -1,9 +1,41 @@
 package dataStructures.heap
 
-import java.util.Random
+import java.util.*
 
 class HeapDataStructures {
+   companion object sorting{
 
+       val startTime = System.nanoTime()
+
+        fun QueueHeap(ar: Array<Int>):Array<Int> {
+           //PriorityQueue to build min heap
+           val numbers = PriorityQueue<Int>()
+
+
+           //add data in MinHeap
+           for (i in 0 until ar.size) { // O(N)
+               numbers.add(ar.get(i))
+           }
+
+           //************pop data by min heap way***********//
+
+           val array = Array<Int>(numbers.size, { it * 1 })
+           var i = 0
+           while (!numbers.isEmpty()) {
+               array[i] = numbers.poll()//O(N)
+
+               i++
+           }
+
+            val endTime = System.nanoTime()
+            val duration = endTime - startTime
+            println("TIME = ${(duration/1000000)/1000} Seconds")
+
+
+            return array
+       }
+
+   }
     fun HeapfiyMax(arr: Array<Int>, n: Int, k: Int): Array<Int> {
 
 
@@ -229,46 +261,48 @@ class HeapDataStructures {
         arr[pos]=value
         return pos
     }
+
+   object comper : Comparator<Int>{
+       override fun compare(o1: Int?, o2: Int?): Int {
+           TODO("Not yet implemented")
+       }
+   }
 }
+
+
+
 fun main (){
 
 
+    val ar = Array<Int>(100,{it*Random().nextInt(12)})
 
-    val ar = arrayOf(4,9,2,5,77,3,2,11,6,33)
+    val array = HeapDataStructures.sorting.QueueHeap(ar)
+
+    println("\n---------------------------")
+    println(" MIN  ${array[0]}")
+    println("MAX  ${array[array.size-1]}")
+    println("MID ${array[(array.size-1)/2]}")
+    println("Average  ${array.average()}".toUpperCase())
 
 
-//    for (i in 0 until ar.size){
+
+
+//    val heapSort = heap.heapSort(kLargest)
+//    println(" After Sorting ")
+//    for (data in heapSort){
 //
-//        ar[i] = Random().nextInt(100)
+//        print("$data , ")
 //    }
-   val heap = HeapDataStructures()
-  val kLargest = heap.HeapfiyMax(ar, (ar.size) / 2, (ar.size - 2) / 2)
+//    println(" \n--------------------------------------")
 
-    println(" Before Sorting ")
-    for (data in kLargest){
-
-        print("$data , ")
-    }
-    println(" \n--------------------------------------")
-
-
-
-
-
-    val heapSort = heap.heapSort(kLargest)
-    println(" After Sorting ")
-    for (data in heapSort){
-
-        print("$data , ")
-    }
-    println(" \n--------------------------------------")
-   println(" MIN  ${heapSort[0]}")
-    println("MAX  ${heapSort[heapSort.size-1]}")
-    println("MID ${heapSort[(heapSort.size-1)/2]}")
-
-    println("Average  ${heapSort.average()}".toUpperCase())
-
+//
 
 
 
 }
+
+
+
+
+
+
