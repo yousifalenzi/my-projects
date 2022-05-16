@@ -1,6 +1,6 @@
 package dataStructures.queueData
 
-class queue (size:Int){
+class queue <T>(size:Int){
 
     var front :Int
     var rear :Int
