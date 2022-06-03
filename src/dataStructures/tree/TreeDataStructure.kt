@@ -3,14 +3,14 @@ package dataStructures.tree
 import java.util.*
 
 
-private data class nodetree<T>(val i:Int, val value:T?){
+data class nodetree<T>(var i:Int, val value:T?){
     var rightChild:nodetree<T>?=null
     var leftChild:nodetree<T>?=null
     var height = 1
 }
 class treeDataStructure <T>{
 
-    private var root:nodetree<T>?=null
+    var root:nodetree<T>?=null
     private var count = 0
     private var HeightLeft = 0
     private var HeightRight = 0
@@ -279,18 +279,46 @@ class treeDataStructure <T>{
         }
     }
 
+       fun isValidBST(node: nodetree<T>?): Boolean {
+          val queue = LinkedList< nodetree<T>?>()//to add nodes
+          var isValidBST = true
 
+          queue.add(node) //12
+
+          while (!queue.isEmpty() && isValidBST) {
+              if (queue.first==null)break
+
+              val enqueue = queue.first//13
+              queue.remove(queue.first)//[]
+
+
+
+              if (enqueue!!.leftChild!=null&&enqueue.rightChild!=null){
+                  isValidBST = enqueue.leftChild!!.i<enqueue.i&&enqueue.rightChild!!.i>enqueue.i
+                  queue.add(enqueue.leftChild)//13
+                  queue.add(enqueue.rightChild)
+              }
+
+              else if(enqueue.leftChild!=null){
+
+                  isValidBST = enqueue.leftChild!!.i<enqueue.i
+                  queue.add(enqueue.leftChild)//13
+
+              }
+              else if(enqueue.rightChild!=null){
+
+                  isValidBST = enqueue.rightChild!!.i>enqueue.i
+                  queue.add(enqueue.rightChild)
+
+              }
+
+      }
+          return isValidBST
 }
 
+}
 fun main (){
 
-    val tr =treeDataStructure<String>()
-    tr.insert1(20,"yousif")
-    tr.insert1(18,"yousif")
-    tr.insert1(22,"yousif")
-    tr.insert1(15,"yousif")
-    tr.insert1(12,"yousif")
-
-    tr.preOrder()
+   val treee = treeDataStructure<String>()
 
 }
