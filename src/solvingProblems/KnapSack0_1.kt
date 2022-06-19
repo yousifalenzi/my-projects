@@ -16,7 +16,7 @@ package solvingProblems
 
           matrix[i][wight] = 0
         }
-        else if (w[i]<=wight)
+        else if (w[i]<=wight) // 2+[1][4-1] 2+1=3 , [1][4] = 1
         {
 
           matrix[i][wight] = max( p[i]+matrix[i-1][wight-w[i]],matrix[i-1][wight])
@@ -73,11 +73,19 @@ package solvingProblems
 
 fun main (){
 
-  val wi = arrayOf(0, 2, 3, 4, 5)
+  val wi = arrayOf(0, 3, 1, 2, 5)
   val pr = arrayOf(0, 1, 2, 5, 6)
 
 
-  val knapsack01 = knapsack(wi,pr, 2)
+  val knapsack01 = knapsack(wi,pr, 8)
+    for(arr1 in knapsack01.iterator()){
+        for(arr2 in arr1.iterator()){
+
+            print("$arr2 ")
+        }
+        println("\n")
+
+    }
 
   val includedOrNot = includedOrNot(knapsack01, wi,pr)
 
