@@ -73,11 +73,13 @@ package solvingProblems
 
 fun main (){
 
-  val wi = arrayOf(0, 3, 1, 2, 5)
-  val pr = arrayOf(0, 1, 2, 5, 6)
+  val wights = arrayOf(0, 3, 1, 2, 5)
+  val profits = arrayOf(0, 1, 2, 5, 6)
 
 
-  val knapsack01 = knapsack(wi,pr, 8)
+  val knapsack01 = knapsack(wights,profits, 8)
+
+    //iterate through matrix
     for(arr1 in knapsack01.iterator()){
         for(arr2 in arr1.iterator()){
 
@@ -87,13 +89,19 @@ fun main (){
 
     }
 
-  val includedOrNot = includedOrNot(knapsack01, wi,pr)
+  val includedOrNot = includedOrNot(knapsack01, wights,profits)
 
-  for (i in includedOrNot.iterator()){
+
+    //iterate through objects included Or Not
+
+    for (i in includedOrNot.iterator()){
 
     print("[$i],")
   }
-  println("\n")
+     println("\n")
+
+    //iterate through wights & profits included Or Not
+
   for (i in getAll().iterator()){
 
     print("[$i],")

@@ -54,13 +54,13 @@ fun hasPairsWithSum2(arry: Array<Int>, sum:Int):Boolean{// o(n)
   }
   fun hasPairsWithSum4(arry: Array<Int>, sum:Int):Boolean{
 
-      val hashSet =HashSet<Int>() // arrayOf(1,2,4,4)
+      val hashSet =HashSet<Int>() // arrayOf(9,6,4,2)=13
       val len = arry.size
 
       for (i in 0 until len){
-          if (hashSet.contains(arry[i]))return true
+          if (hashSet.contains(arry[i]))return true  //4 true
 
-           hashSet.add(sum-arry[i])
+           hashSet.add(sum-arry[i])//4,7,
       }
 
       return false
