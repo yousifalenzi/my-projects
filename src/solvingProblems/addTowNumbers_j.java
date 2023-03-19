@@ -1,7 +1,5 @@
 package solvingProblems;
 
-import java.util.List;
-
 public class addTowNumbers_j {
 
 //You are given two non-empty linked lists representing two non-negative integers.

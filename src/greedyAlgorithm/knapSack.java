@@ -2,10 +2,9 @@ package greedyAlgorithm;
 
 // Java program to solve fractional Knapsack Problem
 import java.util.Arrays;
-import java.util.Comparator;
 
 // Greedy approach
-public class KnapSack {
+public class knapSack {
     // function to get maximum value
     private static double getMaxValue(int[] wt, int[] val,
                                       int capacity)
@@ -17,13 +16,7 @@ public class KnapSack {
         }
 
         // sorting items by value;
-        Arrays.sort(iVal, new Comparator<ItemValue>() {
-            @Override
-            public int compare(ItemValue o1, ItemValue o2)
-            {
-                return o2.cost.compareTo(o1.cost);
-            }
-        });
+        Arrays.sort(iVal, (o1, o2) -> o2.cost.compareTo(o1.cost));
 
         double totalValue = 0d;
 
@@ -42,8 +35,6 @@ public class KnapSack {
                 double fraction
                         = ((double)capacity / (double)curWt);
                 totalValue += (curVal * fraction);
-                capacity
-                        = (int)(capacity - (curWt * fraction));
                 break;
             }
         }

@@ -13,6 +13,17 @@ fun makeSum1(sum:Int):Int{//o(n)
 
 //another solution
 fun makeSum2(sum:Int):Int = sum*(sum+1)/2 // o(1)
+
+fun theSum(n:Int):Int{
+
+     var r = 0
+    for(i in 0 ..n){
+
+        r += i
+
+    }
+    return  r
+}
 fun main (){
 
 

@@ -1,7 +1,5 @@
 package solvingProblems
 
-import JustTry.Higher_Order_Function_and_Lambda.printindex
-
 //merge sorted Tow arrays
 
 

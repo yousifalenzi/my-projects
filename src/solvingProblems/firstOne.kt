@@ -1,7 +1,5 @@
 package solvingProblems
 
-import java.util.ArrayList
-
 
 //Given 2 arrays , create a function that let's a user know(true/false) whether these tow arrays contain any
 // common items
